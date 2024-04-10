@@ -1,0 +1,112 @@
+/* 改变主题色变量 */
+$--border-color-base: #DCDFE6;
+$--border-color-extra-light: #409Eff;
+$--background-color-base: #060F29;
+$--color-primary: #409EFF;
+$--color-text-primary: #FFFFFF;
+$--color-text-regular: #FFFFFF;
+$--color-text-secondary: #ffffff;
+$--color-white: #04102A;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import '~element-ui/packages/theme-chalk/src/index';
+
+// 无法定义项
+.el-range-input {
+    background-color: #060F29;
+}
+
+.el-table__row.warning-row {
+    .el-table__cell {
+      background: #063570 !important;
+    }
+}
+
+.el-button {
+    color: #fff;
+    // border: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.el-button--primary{ 
+    background-image: url("~@/assets/images/btn_bg_primary.png");
+    &.el-button--primary:focus{
+      background-image: url("~@/assets/images/btn_bg_primary.png");
+      color: #fff;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+}
+.el-button--success{ 
+    background-image: url("~@/assets/images/btn_bg_success.png");
+}
+.el-button--warning{ 
+    background-image: url("~@/assets/images/btn_bg_waring.png");
+}
+// .el-button--primary:focus,.el-button--primary:hover {
+//   background-image: url("~@/assets/images/btn_bg_primary.png");
+//   color: #fff;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+// }
+.el-dialog__wrapper{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.el-dialog{
+  background-image:url('../assets/images/bg_frame_role.png');
+  background-size:100% 100%;
+  background-color: transparent;
+  margin-top: unset !important;
+  padding-top: 15px;
+  .el-dialog__header{
+    text-align: center;
+    height: 10% !important;
+    padding: 0;
+    .el-dialog__title{
+      line-height: 35px;
+    }
+    .el-dialog__close{
+      color: #fff;
+    }
+    .el-dialog__headerbtn{
+      top: 45px;
+      font-size: 20px;
+    }
+  }
+  .el-dialog__body{
+    height: 75%;
+    .item-hd{
+      color: #fff;
+    }
+    .item-hd:before{
+      content: '';
+      display: block;
+      position: absolute;
+      left:0;
+      background-color: #1CDAFC;
+      width: 4px;
+      height: 20px;
+    }
+  }
+  
+  .el-dialog__footer{
+    text-align: center;
+  }
+}
+.el-scrollbar__wrap
+{
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-right: 0 !important;
+}
+.el-select-dropdown .el-scrollbar .el-scrollbar__wrap
+{
+  overflow: scroll!important;
+}

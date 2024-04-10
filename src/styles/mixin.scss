@@ -1,0 +1,34 @@
+@mixin rowSpaceBetween {
+    display: flex;
+    justify-content: space-between;
+  }
+  @mixin colCenter {
+    display: flex;
+    align-items: center;
+  }
+// 实时监控开关样式
+@mixin switchHeight($height) {
+    height: $height;
+    line-height: $height;
+  }
+  @mixin switchCoreHeight($height) {
+    height: $height;
+    &::after {
+      height: $height;
+    }
+  }
+  @mixin switchOpenText($text, $top) {
+    &::after {
+      content: $text;
+      right: 10px;
+      top: $top;
+    }
+  }
+  @mixin switchCloseText($text, $top) {
+    &::after {
+      content: $text;
+      left: 10px;
+      top: $top;
+    }
+  }
+  

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>demo</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				font-family: Monospace;
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+      <button id="reset" onclick="reset()">重置</button>
+		</div>
+
+		<script src="./js/three.js"></script>
+		<script src="./js/PCDLoader.js"></script>
+		<script src="./js/TrackballControls.js"></script>
+		<script>
+			var container, stats;
+			var camera, controls, scene, renderer,loader;
+			var pcdPath;
+			pcdPath = top.window.document.getElementById('path').innerText;
+			init();
+			animate();
+
+			function init() {
+				//场景
+				scene = new THREE.Scene();
+        scene.background = new THREE.Color( 0x000000);
+
+				//摄像机
+				camera = new THREE.PerspectiveCamera( 15, window.innerWidth / window.innerHeight, 0.01, 40 );
+        camera.position.x = 0.5;
+				camera.position.z = 8;
+				camera.up.set(0,1,0);
+
+        controls = new THREE.TrackballControls( camera );
+				controls.rotateSpeed = 2.0;
+				controls.zoomSpeed = 0.3;
+				controls.panSpeed = 0.2;
+
+				controls.minDistance = 0.3;
+				controls.maxDistance = 0.3 * 100;
+        
+				scene.add( camera );
+        
+        renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+
+				loader = new THREE.PCDLoader();
+				loader.load(pcdPath, function(mesh) {
+					scene.add( mesh );
+					var center = mesh.geometry.boundingSphere.center;
+					controls.target.set(center.x, center.y, center.z);
+				} );
+				container = document.getElementById( 'container' );
+				container.appendChild( renderer.domElement );
+			}
+			function animate() {
+				requestAnimationFrame(animate);
+				controls.update();
+				renderer.render( scene, camera );
+				// stats.update();
+			}
+
+      function reset(){
+				location.reload(); 
+      }
+
+		</script>
+	</body>
+</html>
